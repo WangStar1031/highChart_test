@@ -2,9 +2,13 @@
 <script src="http://blacklabel.github.io/grouped_categories/grouped-categories.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
-
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-
+<script src="js/jquery-3.4.1.min.js"></script>
+<div id="container" style="min-width: 310px; height: 600px; margin: 0 auto"></div>
+<style type="text/css">
+    .highcharts-credits{
+        /*display: none;*/
+    }
+</style>
 <script type="text/javascript">
 
 // negotive
@@ -14,25 +18,25 @@ var chart = new Highcharts.Chart({
         type: 'column'
     },
     title: {
-        text: 'Stacked column chart'
+        text: 'I-1d: Fourth Graders’ Performance on the National Assessment of Educational Progress (NAEP), by Subject, Late 1990s/2009–2015/2017*'
     },
     xAxis: {
         categories: [{
-            name: "Apples",
-            categories: ["1998", "2016"]
+            name: "Reading",
+            categories: ["1998", "2017"]
         }, {
-            name: "Oranges",
-            categories: ["1998", "2016"]
+            name: "Math",
+            categories: ["1996", "2017"]
         }, {
-            name: "Pears",
-            categories: ["1998", "2016"]
+            name: "Science",
+            categories: ["2009", "2015"]
         }],
         // categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas'],
         gridLineWidth: 1
     },
     yAxis: {
         title: {
-            text: 'Total fruit consumption (%)'
+            text: 'Students Scoring at Achievement Level (%)'
         }
     },
     tooltip: {
@@ -46,20 +50,22 @@ var chart = new Highcharts.Chart({
     },
     series: [{
         color: 'red',
-        name: 'John',
+        name: 'Below Basic',
         data: [-5, -3, -4, -7, -2, -4]
     }, {
-        color: 'blue',
-        name: 'Jane',
-        data: [2, 2, 3, 2, 1, 5]
-    }, {
-        color: 'green',
-        name: 'Joe',
+        color: 'gray',
+        name: 'Basic',
         data: [3, 4, 4, 2, 5, 7]
+    }, {
+        color: 'black',
+        name: 'At or above a Proficient',
+        data: [2, 2, 3, 2, 1, 5]
     }]
-}
-    )
-
+});
+$(".highcharts-credits").html("Humanities Indicators, 2019 . American Academy of Arts & Science");
+$(".highcharts-yaxis-labels text").filter(function(){
+    return $(this).text() < 0;
+}).css("fill", "red");
 // Highcharts.chart('container', {
 //     chart: {
 //         type: 'column'
