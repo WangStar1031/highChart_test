@@ -48,6 +48,13 @@ var chart = new Highcharts.Chart({
             stacking: 'percent'
         }
     },
+    legend: {
+        // layout: 'vertical',
+        // align: 'right',
+        verticalAlign: 'top',
+        // floating: true,
+        backgroundColor: '#FFFFFF'
+    },
     series: [{
         color: 'red',
         name: 'Below Basic',
@@ -66,6 +73,7 @@ $(".highcharts-credits").html("Humanities Indicators, 2019 . American Academy of
 $(".highcharts-yaxis-labels text").filter(function(){
     return $(this).text() < 0;
 }).css("fill", "red");
+$(".highcharts-legend-item rect.highcharts-point").attr("rx", "").attr("ry", "");
 // Highcharts.chart('container', {
 //     chart: {
 //         type: 'column'
